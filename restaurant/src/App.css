@@ -1,0 +1,172 @@
+* {
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 10px 0;
+}
+
+nav {
+	/*
+	Itt adunk egy background-color-t és egy magasságot 
+	*/
+	height: 70px;
+	background-color: #73a499;
+}
+
+nav ul {
+	display: flex;
+	justify-content: center;
+	/*
+	Itt alapesetben csak adunk egy flex-et és egy justify-content: center-t 
+	*/
+}
+
+nav li {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 70px;
+	list-style: none;
+	/*
+	Ez az alapja a nav li-nek, hogy adunk neki egy magasságot ugyanakkorát mint a nav-nak 
+	list-style: none, hogy ne jelenjenek meg a pontok
+	itt viszont kell a flex és nem csak a justify-content: center hanem a align-items: center is!!! 
+	*/
+}
+
+nav a {
+	color: white;
+	text-decoration: none;
+	padding: 15px;
+	/*
+	ez az alapja a nav-nak, hogy kell egy text-decoration: none, hogy ne legyen aláhúzva 
+	color: white, hogy ne fekete színűek legyenek hanem fehérek 
+	padding: hogy eltáolodjanak egymástól!!!!! 
+	*/
+}
+
+/*
+ha az li felé visszük a kurzort, akkor legyen más színű a background-ja 
+*/
+
+nav li:hover {
+	background-color: #a9f4e3;
+}
+
+/*
+és ugyanígy ha az li felé visszük, akkor legyen az a-tagnek más a színe ne fehér!!
+*/
+
+nav li:hover a {
+	color: black;
+}
+
+/*
+Ha azon a menün vagyunk éppen, amelyik oldalon, akkor más színű legyen a background-color
+ezért kell egy selected class és majd csinálunk egy függvényt, ami kér egy path-ot, amit majd megadunk neki meghívásnál, fontos, hogy ezt 
+a függvényt mindegyiknél meg kell majd hívni 
+és a függvényen belül meg összehasonlítjuk a path-ot a location-nel, tehát kell a useLocation, amit lementünk egy változóba és annak van 
+egy olyanja, hogy pathname és ha ez a kettő megegyezik, akkor megkapja a selected class-t ha meg nem, akkor kap egy üres string-et 
+*/
+
+.selected-menu {
+	background-color: #8fccbe;
+}
+
+.container {
+	max-width: 1080px;
+	margin: auto;
+	padding: 15px;
+}
+
+/*
+nagyon fontos, hogy van egy olyan, hogy auto-fill és utána kell minmax függvény és meg tudjuk adni, hogy mennyi px legyen 1fr
+ha annál kisebb akkor levesz egyet és kevesebb részre fr-re fogja felosztani a rendelkezésre álló területet
+*/
+
+.recipes-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	grid-gap: 15px;
+}
+
+/*
+Ez meg egy sima box lesz aminek kell egy background-color egy border!!! és adunk még neki egy padding-et is 
+text-align: center azt lehet itt is megadni, de a megadtuk volna a container-nek, akkor itt már nem kellene!!!! 
+*/
+
+.recipe {
+	background: #a9f4e3;
+	border: 1px solid #8fccbe;
+	text-align: center;
+	padding: 10px;
+}
+
+.recipe-img img {
+	width: 100%;
+	height: 250px;
+	object-fit: cover;
+	/*
+	alapból itt meg kell adni a width: 100%-ot, fontos, hogy a class-on belüli img-nek 
+	és ha meg van adva egy height, akkor mindig kell az object-fit: cover is!!!!
+	*/
+}
+
+.recipe-controls {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	padding: 5px;
+}
+
+.title {
+	height: 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.icon {
+	font-size: 22px;
+	cursor: pointer;
+	color: #e28b00;
+}
+
+.recipe-page-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	text-align: center;
+}
+
+.recipe-page-img img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block; 
+	/*
+	azért, mert ha van valami mellette, akkor az img az nem egy block elem és bemegy majd mellé
+	mi meg azt szeretnénk, hogy egymás alatt legyen!!! 
+	*/
+}
+
+.box {
+	background-color: #a9f4e3;
+	border: 1px solid #8fccbe;
+	margin-left: -1px;
+}
+
+.recipe-data-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 15px; 
+}
+
+.white-box {
+	background-color: white;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+
